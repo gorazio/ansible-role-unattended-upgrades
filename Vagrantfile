@@ -5,17 +5,21 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define "debian" do |debian|
-    debian.vm.box = "chef/debian-7.4"
-  end
 
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
   end
 
-  config.vm.provision :shell, inline: "sudo apt-get install -y python python-apt aptitude"
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update -qq
+    sudo apt-get dist-upgrade -qq
+  SHELL
+
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "role.yml"
+    ansible.extra_vars = {
+
+    }
+    ansible.playbook = "playbook.yml"
     ansible.verbose = "vv"
     ansible.sudo = true
   end
