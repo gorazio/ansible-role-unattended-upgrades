@@ -1,6 +1,6 @@
 # Unattended-Upgrades Role for Ansible
 
-[![Build Status](https://travis-ci.org/jnv/ansible-role-unattended-upgrades.svg?branch=master)](https://travis-ci.org/jnv/ansible-role-unattended-upgrades)
+[![Build Status](https://travis-ci.org/gorazio/ansible-role-unattended-upgrades.svg?branch=master)](https://travis-ci.org/jnv/ansible-role-unattended-upgrades)
 
 Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
@@ -70,7 +70,7 @@ Additionaly unattended-upgrades support two macros (variables), derived from `/e
 ```yaml
 - hosts: all
   roles:
-  - role: jnv.unattended-upgrades
+  - role: unattended-upgrades
     unattended_origins_patterns:
     - 'origin=Ubuntu,archive=${distro_codename}-security'
     - 'o=Ubuntu,a=${distro_codename}-updates'
